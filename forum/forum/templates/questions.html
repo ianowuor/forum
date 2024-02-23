@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    <style>
+        .question-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 500px;
+        }
+    
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    
+        .comment-link {
+            color: blue;
+            text-decoration: none;
+        }
+    
+        .comment-link:hover {
+            text-decoration: underline;
+        }
+    
+        .timestamp {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        {% for question in questions %}
+            <div class="question-container">
+                <div class="question-text">{{ question.question }}</div>
+                <div>
+                    <a class="comment-link" href="{% url 'question' question_id=question.id %}">Contribute</a>
+                </div>
+                <div class="timestamp">{{ question.timestamp }}</div>
+            </div>
+        {% endfor %}
+    </ul>
+</body>
+</html>
